@@ -1,216 +1,358 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download ASTUTECH PRIVATE SERVER</title>
+    <title>YOGAPEDIA - ASTUT SERVER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
         }
-
         body {
-            background-color: #0F172A;
+            font-family: 'Rajdhani', sans-serif;
+            background: #000000;
             color: #ffffff;
-            padding: 2rem 5%;
+            overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Judul */
-        .page-title {
-            text-align: center;
-            margin: 1.5rem 0;
-        }
-        .page-title h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-        .page-title h1 span {
-            color: #FACC15;
-        }
-        .page-title p {
-            font-size: 1.2rem;
-            color: #94A3B8;
-            margin-top: 0.5rem;
-        }
-
-        /* Tombol Platform */
-        .platform-buttons {
-            display: flex;
+        /* LAYAR BANNED */
+        #banScreen {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            z-index: 99999;
+            flex-direction: column;
             justify-content: center;
-            gap: 1rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        .platform-btn {
-            background-color: #334155;
-            border: none;
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 12px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        /* Kotak Konten */
-        .content-box {
-            background-color: #1E293B;
-            border-radius: 15px;
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .platform-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-        .platform-header i {
-            color: #22C55E;
-            font-size: 3rem;
-        }
-        .sub-title {
-            color: #FACC15;
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin: 2rem 0 1rem;
-        }
-
-        /* Tombol Download APK */
-        .download-btn {
-            display: block;
-            width: 100%;
-            background-color: #22C55E;
-            color: white;
-            padding: 1.3rem;
-            border-radius: 10px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 1rem 0;
-            text-decoration: none;
             text-align: center;
         }
-        .download-btn:hover {
-            background-color: #16A34A;
+        .ban-title {
+            font-size: 60px;
+            color: #ff0000;
+            font-weight: bold;
+            text-shadow: 0 0 30px #ff0000;
+            margin-bottom: 20px;
+        }
+        .ban-text {
+            font-size: 24px;
+            color: #cccccc;
+        }
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+        @keyframes blinker {
+            50% { opacity: 0; }
         }
 
-        /* TOMBOL JSON ICON KUNING */
-        .json-btn {
-            display: block;
-            width: 100%;
-            background-color: #3498DB;
-            color: white;
-            padding: 1.3rem;
-            border-radius: 10px;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 1rem 0;
-            text-decoration: none;
-            text-align: center;
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: #1a1a1a;
+            border-bottom: 3px solid #ffffff;
         }
-        .json-btn i {
-            color: #FACC15 !important; /* WARNA KUNING */
-            font-size: 1.5rem;
-        }
-
-        /* Panduan */
-        .guide-text {
-            color: #E2E8F0;
-            font-size: 1.2rem;
-            line-height: 1.8;
-        }
-        .guide-text strong {
+        .logo {
+            font-size: 32px;
+            font-weight: 800;
             color: #ffffff;
-            font-weight: 700;
+            text-shadow: 0 0 15px #ffffff;
+            letter-spacing: 2px;
         }
 
+        /* TOMBOL MASUK */
+        #btnLogin {
+            background: #ffffff;
+            color: #000000;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        #btnLogin:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 255, 255, 1);
+        }
+
+        /* JUDUL */
+        .title-main {
+            text-align: center;
+            font-size: 48px;
+            font-weight: 800;
+            margin: 30px 0 10px;
+            color: #ffffff;
+            text-shadow: 0 0 20px #fff, 0 0 30px #fff;
+            letter-spacing: 3px;
+        }
+        .server-name {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 0 0 15px #ffffff;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #e0e0e0;
+            font-size: 18px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* TOMBOL UTAMA */
+        .menu-btn {
+            display: block;
+            width: 85%;
+            padding: 20px;
+            margin: 15px auto;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            border-radius: 20px;
+            text-decoration: none;
+            border: 3px solid #ffffff;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            color: #000000;
+            background: #ffffff;
+            box-shadow: 0 0 25px rgba(255,255,255,0.5);
+        }
+        .menu-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+        }
+        .menu-btn:hover::before {
+            left: 100%;
+        }
+
+        /* KOTAK FITUR */
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 0 25px;
+            margin: 40px auto;
+            width: 90%;
+        }
+        .feature-box {
+            background: #1a1a1a;
+            border: 3px solid #ffffff;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            pointer-events: none;
+            cursor: default;
+            color: white;
+            text-shadow: 0 0 10px white;
+        }
+
+        /* PANEL ADMIN */
+        .admin-panel {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            border: 3px solid white;
+            border-radius: 15px;
+            text-align: center;
+            display: none;
+        }
+        .admin-panel h3 {
+            margin-bottom: 15px;
+            font-size: 24px;
+            color: white;
+        }
+        #inputID {
+            width: 80%;
+            padding: 15px;
+            font-size: 22px;
+            text-align: center;
+            border: 3px solid white;
+            background: black;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        .btn-action {
+            padding: 15px 30px;
+            font-size: 20px;
+            font-weight: bold;
+            border: 3px solid white;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 5px;
+            width: 40%;
+            color: white;
+        }
+        #btnBan {
+            background: #ff0000;
+        }
+        #btnUnban {
+            background: #00aa00;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #ffffff;
+            margin-top: 20px;
+            font-size: 16px;
+            text-shadow: 0 0 5px white;
+        }
+
+        /* ID DISPLAY */
+        #idDisplay {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background: #1a1a1a;
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 16px;
+            border: 2px solid white;
+            color: white;
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- JUDUL -->
-    <div class="page-title">
-        <h1>YOGA PEDIA MY ID <span><br>ASTUTECH<br>PRIVATE SERVER</span></h1>
-        <p>Developer:YOGA FFLK</p>
+    <div id="banScreen">
+        <div class="ban-title">🚫 KAMU DI-BAN 🚫</div>
+        <div class="ban-text">AKSES DITOLAK</div>
+        <div class="ban-text blink">FORCE CLOSE</div>
     </div>
 
-    
+    <div id="mainContent">
+        <nav class="navbar">
+            <div class="logo">YOGAPEDIA</div>
+            <button id="btnLogin">MASUK</button>
+        </nav>
 
-      <div class="platform-buttons">
+        <div class="title-main">YOGAPEDIA</div>
+        <div class="server-name">✨ ASTUT PRIVATE SERVER ✨</div>
 
-    <!-- TOMBOL ANDROID -->
-    <a href="LINK_ANDROID_KAMU" class="platform-btn">
-        <i class="fab fa-android"></i> Android
-    </a>
-
-    <!-- TOMBOL IOS -->
-    <a href="LINK_IOS_KAMU" class="platform-btn">
-        <i class="fab fa-apple"></i> ios
-    </a>
-
-    <!-- TOMBOL EMULATOR -->
-    <a href="LINK_EMULATOR_KAMU" class="platform-btn">
-        <i class="fas fa-desktop"></i> Emulator
-    </a>
-
-</div>
-
-
-
-    <!-- KONTEN UTAMA -->
-    <div class="content-box">
-        <div class="platform-header">
-            <i class="fab fa-android"></i>
-            <span>Android</span>
+        <div class="subtitle">
+            Rasakan sensasi bermain dengan fitur lengkap, skin gratis, dan pengalaman terbaik hanya di sini!
         </div>
 
-        <h2 class="sub-title">Required Files:</h2>
+        <a href="https://www.mediafire.com/file/cpjctcde2bvdkut/Free _Fire_MAX_ARMv8.apks/file" target="_blank" class="menu-btn">📥 DOWNLOAD APK 64 BIT</a>
+        <a href="https://www.mediafire.com/file/d7t3x2nscwll7ct/Free _Fire_MAX_ARMv7.apks/file" target="_blank" class="menu-btn">📥 DOWNLOAD APK 32 BIT</a>
+        <a href="https://unlockffbeta.com/" target="_blank" class="menu-btn">🔓 UNLOCK ID</a>
+        <a href="https://www.mediafire.com/file/5bjk23al92jtxpg/localconfig.json/file" target="_blank" class="menu-btn">📄 JSON FILE</a>
 
-        <a href="https://www.mediafire.com/file/cpjctcde2bvdkut/Fre" class="download-btn">
-            Download APK 64-Bit (arm64-v8a)
-        </a>
-
-        <a href="https://www.mediafire.com/file/d7t3x2nscwll7ct/Free_Fire_MAX_ARMv7.apks/file" class="download-btn">
-            Download APK 32-Bit (armeabi-v7a)
-        </a>
-
-        <!-- TOMBOL JSON ICON KUNING -->
-        <a href="https://www.mediafire.com/file/5bjk23al92jtxpg/localconfig.json/file" class="json-btn">
-            <i class="fas fa-folder"></i> File JSON
-        </a>
-      <a href="https://unlockffbeta.com/">
-  <div class="download-btn unlock">📂 UNLOCK ID FF</div>
-</a>
-
-
-
- 
-
-
-        <h2 class="sub-title">Installation Guide:</h2>
-        <div class="guide-text">
-            <p>1. Choose and download the <strong>APK</strong> version that matches your device architecture.</p>
-            <p>2. If you are unsure, the <strong>64-Bit</strong> version is recommended for most modern phones.</p>
-            <p>3. Install the downloaded <strong>APK file</strong>.</p>
+        <!-- PANEL ADMIN -->
+        <div class="admin-panel" id="adminPanel">
+            <h3>🔧 PANEL ADMIN</h3>
+            <input type="text" id="inputID" placeholder="Ketik ID disini..." value="1000">
+            <br>
+            <button class="btn-action" id="btnBan">🚫 BAN ID</button>
+            <button class="btn-action" id="btnUnban">✅ UNBAN ID</button>
         </div>
+
+        <div class="features-container">
+            <div class="feature-box">✨ GRATIS SKIN</div>
+            <div class="feature-box">🚀 ANTI LAG</div>
+            <div class="feature-box">🛡️ ANTI BAN</div>
+        </div>
+
+        <div class="footer">💻 DEVELOPED BY YOGA 💻</div>
     </div>
-    <!-- FOOTER -->
-    <div style="text-align: center; margin-top: 30px; padding: 20px; color: #94A3B8;">
-        <p>© 2026 ASTUTECH PRIVATE SERVER. All rights reserved.</p>
-        <p style="font-size: 0.9rem; margin-top: 5px;">Developed by <strong style="color: #FACC15;">Aden Pedia</strong></p>
-    </div>
+
+    <div id="idDisplay">ID: <span id="userIdText">1000</span></div>
+
+    <script>
+        let isLocked = false;
+        const KODE_ADMIN = "1000";
+        let listBanned = [];
+        
+        const userID = "1000"; 
+        document.getElementById('userIdText').innerText = userID;
+
+        function aktifkanBan() {
+            if(isLocked) return;
+            isLocked = true;
+            document.getElementById('mainContent').style.display = 'none';
+            document.getElementById('banScreen').style.display = 'flex';
+            setTimeout(() => window.close(), 1000);
+        }
+
+        // TOMBOL MASUK
+        document.getElementById('btnLogin').addEventListener('click', function() {
+            let pass = prompt("🔐 MASUKKAN KODE ADMIN:");
+            if(pass === KODE_ADMIN) {
+                alert("✅ LOGIN BERHASIL! PANEL DIBUKA!");
+                document.getElementById('adminPanel').style.display = 'block';
+            } else if(pass !== null) {
+                alert("❌ SALAH KODE!");
+            }
+        });
+
+        // TOMBOL BAN
+        document.getElementById('btnBan').addEventListener('click', function() {
+            let id = document.getElementById('inputID').value;
+            if(id) {
+                listBanned.push(id);
+                alert(`✅ ID ${id} BERHASIL DI-BAN!`);
+                if(id == userID) aktifkanBan();
+                document.getElementById('inputID').value = '1000';
+            } else {
+                alert("❌ MASUKKAN ID DULU!");
+            }
+        });
+
+        // TOMBOL UNBAN - CARA BARU
+        document.getElementById('btnUnban').addEventListener('click', function() {
+            let id = document.getElementById('inputID').value;
+            
+            // Filter array, buang ID yang diketik
+            listBanned = listBanned.filter(function(item) {
+                return item !== id;
+            });
+            
+            alert(`✅ ID ${id} BERHASIL DI-UNBAN!`);
+            document.getElementById('inputID').value = '1000';
+        });
+
+        // DETEKSI HACKER
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.addEventListener('keydown', e => {
+            if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) {
+                e.preventDefault();
+                aktifkanBan();
+            }
+        });
+    </script>
 
 </body>
 </html>
