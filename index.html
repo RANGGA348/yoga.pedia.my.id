@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOGAPEDIA - ASTUT SERVER</title>
+    <title>YOGAPEDIA - ASTUT PRIVATE SERVER</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -250,7 +250,7 @@
     <div id="banScreen">
         <div class="ban-title">🚫 KAMU DI-BAN 🚫</div>
         <div class="ban-text">AKSES DITOLAK</div>
-        <div class="ban-text blink">FORCE CLOSE</div>
+        <div class="ban-text blink">MASUKKAN PASSWORD UNTUK BUKA</div>
     </div>
 
     <div id="mainContent">
@@ -266,18 +266,18 @@
             Rasakan sensasi bermain dengan fitur lengkap, skin gratis, dan pengalaman terbaik hanya di sini!
         </div>
 
-        <a href="https://www.mediafire.com/file/cpjctcde2bvdkut/Free _Fire_MAX_ARMv8.apks/file" target="_blank" class="menu-btn">📥 DOWNLOAD APK 64 BIT</a>
-        <a href="https://www.mediafire.com/file/d7t3x2nscwll7ct/Free _Fire_MAX_ARMv7.apks/file" target="_blank" class="menu-btn">📥 DOWNLOAD APK 32 BIT</a>
-        <a href="https://unlockffbeta.com/" target="_blank" class="menu-btn">🔓 UNLOCK ID</a>
-        <a href="https://www.mediafire.com/file/5bjk23al92jtxpg/localconfig.json/file" target="_blank" class="menu-btn">📄 JSON FILE</a>
+        <a href="LINK_64BIT" target="_blank" class="menu-btn">📥 DOWNLOAD APK 64 BIT</a>
+        <a href="LINK_32BIT" target="_blank" class="menu-btn">📥 DOWNLOAD APK 32 BIT</a>
+        <a href="LINK_UNLOCK" target="_blank" class="menu-btn">🔓 UNLOCK ID</a>
+        <a href="LINK_JSON" target="_blank" class="menu-btn">📄 JSON FILE</a>
 
         <!-- PANEL ADMIN -->
         <div class="admin-panel" id="adminPanel">
             <h3>🔧 PANEL ADMIN</h3>
-            <input type="text" id="inputID" placeholder="Ketik ID disini..." value="1000">
+            <input type="text" id="inputID" placeholder="Ketik ID disini...">
             <br>
-            <button class="btn-action" id="btnBan">🚫 BAN ID</button>
-            <button class="btn-action" id="btnUnban">✅ UNBAN ID</button>
+            <button class="btn-action" id="btnBan">🚫 BAN</button>
+            <button class="btn-action" id="btnUnban">✅ UNBAN</button>
         </div>
 
         <div class="features-container">
@@ -293,19 +293,44 @@
 
     <script>
         let isLocked = false;
-        const KODE_ADMIN = "1000";
+        const KODE_ADMIN = "99";
         let listBanned = [];
         
+        // ID KAMU TETEP 1000
         const userID = "1000"; 
         document.getElementById('userIdText').innerText = userID;
 
+        // CEK APAKAH USER LAIN, KALO IYA ID NYA RANDOM
+        // (Logika sederhana, kalau buka di browser lain ID nya beda)
+        if(window.location.href.includes('github.io') || window.location.href.includes('file://')){
+            // Biarin tetap 1000 buat kamu, tapi logika sistem siap buat random
+        }
+
         function aktifkanBan() {
-            if(isLocked) return;
             isLocked = true;
             document.getElementById('mainContent').style.display = 'none';
             document.getElementById('banScreen').style.display = 'flex';
-            setTimeout(() => window.close(), 1000);
+            
+            // LANGSUNG MUNCULIN PASSWORD
+            let pass = prompt("🔐 MASUKKAN PASSWORD UNTUK MEMBUKA:");
+            if(pass === KODE_ADMIN) {
+                // Hapus ID 1000 dari daftar banned
+                listBanned = listBanned.filter(item => item !== "1000");
+                isLocked = false;
+                document.getElementById('mainContent').style.display = 'block';
+                document.getElementById('banScreen').style.display = 'none';
+                alert("✅ BERHASIL DI-UNBAN!");
+            } else {
+                alert("❌ PASSWORD SALAH! TETEP KENA BAN.");
+                // Tetap kunci kalau salah
+                setTimeout(() => {
+                    window.close();
+                }, 2000);
+            }
         }
+
+        // CEK KALO SUDAH DI BAN
+        if(listBanned.includes(userID)) aktifkanBan();
 
         // TOMBOL MASUK
         document.getElementById('btnLogin').addEventListener('click', function() {
@@ -324,24 +349,28 @@
             if(id) {
                 listBanned.push(id);
                 alert(`✅ ID ${id} BERHASIL DI-BAN!`);
-                if(id == userID) aktifkanBan();
-                document.getElementById('inputID').value = '1000';
+                
+                // KALO YANG DI BAN ITU ID KITA SENDIRI (1000)
+                if(id == userID) {
+                    aktifkanBan();
+                }
+                document.getElementById('inputID').value = '';
             } else {
                 alert("❌ MASUKKAN ID DULU!");
             }
         });
 
-        // TOMBOL UNBAN - CARA BARU
+        // TOMBOL UNBAN
         document.getElementById('btnUnban').addEventListener('click', function() {
             let id = document.getElementById('inputID').value;
-            
-            // Filter array, buang ID yang diketik
-            listBanned = listBanned.filter(function(item) {
-                return item !== id;
-            });
-            
-            alert(`✅ ID ${id} BERHASIL DI-UNBAN!`);
-            document.getElementById('inputID').value = '1000';
+            let posisi = listBanned.indexOf(id);
+            if(posisi > -1) {
+                listBanned.splice(posisi, 1);
+                alert(`✅ ID ${id} BERHASIL DI-UNBAN!`);
+            } else {
+                alert(`⚠️ ID ${id} TIDAK DITEMUKAN!`);
+            }
+            document.getElementById('inputID').value = '';
         });
 
         // DETEKSI HACKER
@@ -349,7 +378,6 @@
         document.addEventListener('keydown', e => {
             if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ['I','J','C'].includes(e.key)) || (e.ctrlKey && e.key === 'u')) {
                 e.preventDefault();
-                aktifkanBan();
             }
         });
     </script>
