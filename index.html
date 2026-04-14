@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;70;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
         body {
             font-family: 'Orbitron', monospace;
             background: #0a0a0a;
@@ -16,6 +16,9 @@
         }
         .glow {
             box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, inset 0 0 10px #0f0;
+        }
+        .glow-red {
+            box-shadow: 0 0 10px #f00, 0 0 20px #f00, inset 0 0 10px #f00;
         }
         .scanline {
             background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,255,0,0.1) 50%, rgba(0,0,0,0) 100%);
@@ -40,6 +43,11 @@
             background: #0f0;
             color: #000;
             box-shadow: 0 0 15px #0f0;
+        }
+        .counter {
+            font-size: 3em;
+            font-weight: 900;
+            text-shadow: 0 0 15px currentColor;
         }
         /* STYLE NOTIF BAN - FULL SCREEN LOCK */
         .alert-box {
@@ -85,7 +93,7 @@
     <header class="border-b border-green-700 p-4 flex justify-between items-center">
         <h1 class="text-2xl font-bold tracking-widest">SHADOW<span class="text-red-500">HACK</span></h1>
         <div class="text-sm border border-green-600 px-3 py-1 rounded">
-            USER ID: <span class="font-bold text-yellow-400" id="myid"></span>
+            <a href="admin.html" class="text-yellow-400 font-bold">PANEL ADMIN</a>
         </div>
     </header>
 
@@ -164,7 +172,7 @@
 
             </div>
 
-            <!-- TULISAN DEVELOPER DI BAWAH TOMBOL -->
+            <!-- TULISAN DEVELOPER -->
             <p class="text-center mt-4 text-sm text-yellow-400 font-bold">DEVELOPED BY YOGAPEDIA</p>
 
         </div>
@@ -194,9 +202,6 @@
     <script>
         const KODE_ADMIN = "1000";
 
-        // SET ID: LU = 1.000, USER LAIN RANDOM
-        document.getElementById('myid').innerText = "1.000"; 
-
         // CEK STATUS BAN KETIKA REFRESH
         window.onload = function() {
             let status = localStorage.getItem('status_banned');
@@ -213,8 +218,8 @@
                 let isi = document.getElementById('teksnotif');
                 isi.innerHTML = `
                 🆔 ID : ${id}
-                <br>⏳ WAKTU: 6 HARI
-                <br><strong>AKUNMU DI BAN SELAMA 6 HARI</strong>
+                <br>⏳ WAKTU: PERMANEN
+                <br><strong>AKUNMU DI BAN OLEH ADMIN</strong>
                 `;
                 box.style.display = 'flex';
             } else {
