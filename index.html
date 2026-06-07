@@ -1,258 +1,337 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id-ID">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHADOW HACKER v1.0</title>
+    <title>YOGA SKZ • PUSAT UNDUHAN RESMI</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-        body {
-            font-family: 'Orbitron', monospace;
-            background: #0a0a0a;
-            color: #0f0;
-            overflow-x: hidden;
-        }
-        .glow {
-            box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, inset 0 0 10px #0f0;
-        }
-        .glow-red {
-            box-shadow: 0 0 10px #f00, 0 0 20px #f00, inset 0 0 10px #f00;
-        }
-        .scanline {
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,255,0,0.1) 50%, rgba(0,0,0,0) 100%);
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            animation: scan 4s linear infinite;
-            pointer-events: none;
-        }
-        @keyframes scan {
-            0% { top: -100%; }
-            100% { top: 100%; }
-        }
-        .btn-hack {
-            transition: all 0.3s;
-            border: 1px solid #0f0;
-            background: transparent;
-        }
-        .btn-hack:hover {
-            background: #0f0;
-            color: #000;
-            box-shadow: 0 0 15px #0f0;
-        }
-        .counter {
-            font-size: 3em;
-            font-weight: 900;
-            text-shadow: 0 0 15px currentColor;
-        }
-        /* STYLE NOTIF BAN - FULL SCREEN LOCK */
-        .alert-box {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.98);
-            z-index: 99999;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-        .content-box {
-            border: 5px solid red;
-            padding: 30px;
-            background: #111;
-            box-shadow: 0 0 50px red;
-            animation: blink 1s infinite;
-        }
-        @keyframes blink {
-            0% { border-color: red; }
-            50% { border-color: transparent; }
-            100% { border-color: red; }
-        }
-        .secret-code {
-            background: black;
-            border: 2px solid yellow;
-            color: yellow;
-            padding: 10px;
-            text-align: center;
-            font-size: 1.5em;
-            margin: 15px 0;
-        }
-    </style>
-</head>
-<body class="min-h-screen">
-    <div class="scanline"></div>
-
-    <!-- HEADER -->
-    <header class="border-b border-green-700 p-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold tracking-widest">SHADOW<span class="text-red-500">HACK</span></h1>
-        <div class="text-sm border border-green-600 px-3 py-1 rounded">
-            <a href="admin.html" class="text-yellow-400 font-bold">PANEL ADMIN</a>
-        </div>
-    </header>
-
-    <!-- MAIN DASHBOARD -->
-    <main class="container mx-auto p-4 mt-6">
-        
-        <!-- STATUS BOX -->
-        <div class="bg-gray-900 border border-green-600 rounded p-4 mb-8 glow">
-            <h2 class="text-xl mb-2">SYSTEM STATUS: <span class="text-green-400">UNDETECTED</span></h2>
-            <p>DNS Spoofing: <span class="float-right text-green-400">ACTIVE ✅</span></p>
-            <p>VPN Tunnel: <span class="float-right text-green-400">SECURE 🛡️</span></p>
-            <p>Firewall: <span class="float-right text-red-500">BYPASSED 🔓</span></p>
-        </div>
-
-        <!-- MENU FITUR -->
-        <h3 class="text-xl border-b border-green-700 pb-2 mb-4">MAIN MENU</h3>
-        
-        <div class="grid grid-cols-2 gap-4">
-            
-            <!-- FITUR 1: DNS -->
-            <div class="bg-gray-900 p-4 rounded border border-green-800 hover:border-green-500 transition">
-                <i class="fas fa-satellite-dish text-3xl mb-2"></i>
-                <h4>DNS CHANGER</h4>
-                <p class="text-xs opacity-70">Change DNS to Cloudflare & Google</p>
-                <button onclick="alert('DNS Changed to 1.1.1.1')" class="btn-hack w-full mt-2 py-1 rounded text-sm">ACTIVATE</button>
-            </div>
-
-            <!-- FITUR 2: VPN -->
-            <div class="bg-gray-900 p-4 rounded border border-green-800 hover:border-green-500 transition">
-                <i class="fas fa-user-secret text-3xl mb-2"></i>
-                <h4>PRO VPN</h4>
-                <p class="text-xs opacity-70">Hide IP Address & Location</p>
-                <button onclick="alert('Connected to Server: USA')" class="btn-hack w-full mt-2 py-1 rounded text-sm">CONNECT</button>
-            </div>
-
-            <!-- FITUR 3: BAN -->
-            <div class="bg-gray-900 p-4 rounded border border-red-800 hover:border-red-500 transition">
-                <i class="fas fa-ban text-3xl mb-2 text-red-500"></i>
-                <h4>BAN USER</h4>
-                <p class="text-xs opacity-70">🔒 PERMANENT LOCK</p>
-                <input type="text" id="banid" placeholder="Enter ID..." class="w-full bg-black border border-red-700 p-1 text-center text-sm mb-2">
-                <button onclick="banUser()" class="btn-hack w-full mt-2 py-1 rounded text-sm border-red-500 text-red-400">BAN NOW</button>
-            </div>
-
-            <!-- FITUR 4: UNBAN -->
-            <div class="bg-gray-900 p-4 rounded border border-blue-800 hover:border-blue-500 transition">
-                <i class="fas fa-unlock text-3xl mb-2 text-blue-500"></i>
-                <h4>UNBAN USER</h4>
-                <p class="text-xs opacity-70">👑 ADMIN ONLY</p>
-                <input type="text" id="unbanid" placeholder="Enter ID..." class="w-full bg-black border border-blue-700 p-1 text-center text-sm mb-2">
-                <button onclick="unbanUser()" class="btn-hack w-full mt-2 py-1 rounded text-sm border-blue-500 text-blue-400">UNBAN</button>
-            </div>
-
-        </div>
-
-        <!-- DOWNLOAD SECTION - FILE FF -->
-        <div class="mt-10 border-t border-green-700 pt-6">
-            <h3 class="text-xl mb-4">📂 FILE CONFIG & APK FF</h3>
-            <div class="space-y-3">
-                
-                <a href="https://www.mediafire.com/file/cpjctcde2bvdkut/Free_Fire_MAX_ARMv8.apks/file" target="_blank" class="block bg-gray-900 p-3 rounded border border-green-600 hover:bg-green-900 transition">
-                    <i class="fas fa-download"></i> 📁 APK FREE FIRE 64BIT
-                </a>
-                
-                <a href="https://www.mediafire.com/file/d7t3x2nscwll7ct/Free_Fire_MAX_ARMv7.apks/file" target="_blank" class="block bg-gray-900 p-3 rounded border border-green-600 hover:bg-green-900 transition">
-                    <i class="fas fa-download"></i> 📁 APK FREE FIRE 32BIT
-                </a>
-                
-                <a href="https://www.mediafire.com/file/5bjk23al92jtxpg/localconfig.json/file" target="_blank" class="block bg-gray-900 p-3 rounded border border-green-600 hover:bg-green-900 transition">
-                    <i class="fas fa-download"></i> 📁 FILE JSON FULL SKIN
-                </a>
-                
-                <a href="https://unlockffbeta.com/" target="_blank" class="block bg-gray-900 p-3 rounded border border-green-600 hover:bg-green-900 transition">
-                    <i class="fas fa-download"></i> 📁 UNLOCK ID FF TERBARU
-                </a>
-
-            </div>
-
-            <!-- TULISAN DEVELOPER -->
-            <p class="text-center mt-4 text-sm text-yellow-400 font-bold">DEVELOPED BY YOGAPEDIA</p>
-
-        </div>
-
-    </main>
-
-    <footer class="text-center p-4 mt-10 text-xs opacity-50 border-t border-green-900">
-        SYSTEM SECURED | ADMIN ID: 1.000 | VERSION 1.0
-    </footer>
-
-    <!-- NOTIFIKASI BAN - FULL SCREEN GAK ADA TOMBOL CLOSE -->
-    <div id="notif" class="alert-box">
-        <div class="content-box">
-            <h2 class="text-red-600 text-3xl font-bold">⚠️ AKUN DI BAN ⚠️</h2>
-            <br>
-            <p class="text-2xl" id="teksnotif"></p>
-            <br>
-            <p class="text-yellow-400 text-xl">🔒 LAYAR TERKUNCI</p>
-            <p class="text-xs">REFRESH / TUTUP BROWSER GAK BERGUNA!</p>
-            <p class="text-xs">HUBUNGI ADMIN UNTUK MEMBUKA</p>
-            
-            <input type="password" id="koderahasia" placeholder="KODE ADMIN..." class="secret-code">
-            <button onclick="bukaKunci()" class="btn-hack border-yellow-500 text-yellow-400 px-6 py-2">UNLOCK</button>
-        </div>
-    </div>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap">
 
     <script>
-        const KODE_ADMIN = "1000";
-
-        // CEK STATUS BAN KETIKA REFRESH
-        window.onload = function() {
-            let status = localStorage.getItem('status_banned');
-            if(status === 'true') {
-                document.getElementById('notif').style.display = 'flex';
-            }
-        }
-
-        function banUser() {
-            let id = document.getElementById('banid').value;
-            if(id) {
-                localStorage.setItem('status_banned', 'true');
-                let box = document.getElementById('notif');
-                let isi = document.getElementById('teksnotif');
-                isi.innerHTML = `
-                🆔 ID : ${id}
-                <br>⏳ WAKTU: PERMANEN
-                <br><strong>AKUNMU DI BAN OLEH ADMIN</strong>
-                `;
-                box.style.display = 'flex';
-            } else {
-                alert('MASUKKAN ID TARGET!');
-            }
-        }
-
-        function bukaKunci() {
-            let pass = document.getElementById('koderahasia').value;
-            if(pass == KODE_ADMIN) {
-                localStorage.removeItem('status_banned');
-                document.getElementById('notif').style.display = 'none';
-                alert(`✅ AKSES DIBERIKAN!\n🔓 LAYAR TERBUKA`);
-            } else {
-                alert('❌ KODE SALAH!\nHANYA ADMIN YANG BISA MASUK!');
-            }
-        }
-
-        function unbanUser() {
-            let id = document.getElementById('unbanid').value;
-            if(id) {
-                localStorage.removeItem('status_banned');
-                document.getElementById('notif').style.display = 'none';
-                alert(`
-✅ BERHASIL DI UNBAN!
-🆔 ID: ${id}
-🔓 STATUS: ACTIVE
-                `);
-            } else {
-                alert('MASUKKAN ID YANG MAU DI-UNBAN!');
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        utama: '#165DFF',
+                        aksen: '#7B2CFF',
+                        gelap: '#0F172A',
+                        netral: '#64748B',
+                        lembut: '#F1F5F9',
+                        sukses: '#10B981',
+                        info: '#06B6D4',
+                        unguMewah: '#4F46E5',
+                        biruMewah: '#1D4ED8',
+                        emas: '#F59E0B',
+                        perak: '#94A3B8',
+                        tiktok: '#FF0050',
+                        hitamGelap: '#020617',
+                    },
+                    fontFamily: {
+                        jakarta: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'premium': '0 20px 60px rgba(22, 93, 255, 0.12)',
+                        'premium-ungu': '0 20px 60px rgba(123, 44, 255, 0.12)',
+                        'premium-tiktok': '0 20px 60px rgba(255, 0, 80, 0.2)',
+                        'glow-utama': '0 0 30px rgba(22, 93, 255, 0.4), 0 0 60px rgba(22, 93, 255, 0.15)',
+                        'glow-aksen': '0 0 30px rgba(123, 44, 255, 0.4), 0 0 60px rgba(123, 44, 255, 0.15)',
+                        'glow-tiktok': '0 0 30px rgba(255, 0, 80, 0.5), 0 0 60px rgba(255, 0, 80, 0.2)',
+                        'glow-emas': '0 0 30px rgba(245, 158, 11, 0.3)',
+                        'kaca': 'inset 0 1px 0 rgba(255,255,255,0.4), inset 0 -1px 0 rgba(255,255,255,0.2)',
+                        'dalam': 'inset 0 2px 8px rgba(0,0,0,0.1)',
+                        'luar-cahaya': '0 8px 32px rgba(0,0,0,0.12)',
+                    },
+                    backdropBlur: {
+                        'xl': '24px',
+                        'xxl': '40px',
+                        'maksimal': '60px',
+                    },
+                    animation: {
+                        'masuk': 'masuk 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+                        'melayang': 'melayang 4s ease-in-out infinite',
+                        'denyut-cahaya': 'denyut-cahaya 3s ease-in-out infinite alternate',
+                        'muncul-satu': 'muncul 0.6s ease-out 0.1s both',
+                        'muncul-dua': 'muncul 0.6s ease-out 0.2s both',
+                        'muncul-tiga': 'muncul 0.6s ease-out 0.3s both',
+                        'putar-gradasi': 'putar-gradasi 8s linear infinite',
+                        'scale-in': 'scale-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+                        'kilau': 'kilau 2s ease-in-out infinite alternate',
+                    },
+                    keyframes: {
+                        masuk: {
+                            '0%': { opacity: '0', transform: 'translateY(30px) scale(0.95)' },
+                            '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+                        },
+                        melayang: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-12px)' },
+                        },
+                        'denyut-cahaya': {
+                            '0%': { boxShadow: '0 0 20px rgba(22, 93, 255, 0.25)' },
+                            '100%': { boxShadow: '0 0 50px rgba(123, 44, 255, 0.5)' },
+                        },
+                        muncul: {
+                            '0%': { opacity: '0', transform: 'translateY(15px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        'putar-gradasi': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '100%': { backgroundPosition: '200% 50%' },
+                        },
+                        'scale-in': {
+                            '0%': { opacity: '0', transform: 'scale(0.6) rotate(-5deg)' },
+                            '100%': { opacity: '1', transform: 'scale(1) rotate(0deg)' },
+                        },
+                        'kilau': {
+                            '0%': { filter: 'brightness(1)' },
+                            '100%': { filter: 'brightness(1.4) drop-shadow(0 0 12px rgba(255,255,255,0.6))' },
+                        }
+                    }
+                }
             }
         }
     </script>
+
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .gradasi-utama {
+                background: linear-gradient(135deg, #165DFF 0%, #4F46E5 50%, #7B2CFF 100%);
+                background-size: 400% 400%;
+            }
+            .gradasi-tiktok {
+                background: linear-gradient(135deg, #00F2EA 0%, #25F4EE 30%, #FE2C55 70%, #FF0050 100%);
+                background-size: 400% 400%;
+            }
+            .gradasi-teks {
+                background: linear-gradient(135deg, #165DFF 0%, #7B2CFF 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            .latar-kaca-mewah {
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(60px);
+                border: 1px solid rgba(255, 255, 255, 0.95);
+            }
+            .latar-kaca-gelap {
+                background: rgba(15, 23, 42, 0.75);
+                backdrop-filter: blur(40px);
+                border: 1px solid rgba(255, 255, 255, 0.15);
+            }
+            .hilang {
+                display: none !important;
+            }
+            .tombol-mewah {
+                position: relative;
+                overflow: hidden;
+                transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+                border: 1px solid rgba(255,255,255,0.25);
+                font-weight: 600;
+                letter-spacing: 0.3px;
+            }
+            .tombol-mewah::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255,255,255,0.45), transparent);
+                transition: left 0.8s ease;
+            }
+            .tombol-mewah:hover::before {
+                left: 100%;
+            }
+            .tombol-mewah:hover {
+                transform: translateY(-5px) scale(1.04);
+            }
+            .bayangan-teks-mewah {
+                text-shadow: 0 3px 25px rgba(0,0,0,0.18);
+            }
+            .batas-mewah {
+                border: 1px solid;
+                border-image: linear-gradient(135deg, rgba(22,93,255,0.35), rgba(123,44,255,0.35)) 1;
+            }
+            .overlay-mewah {
+                background: linear-gradient(135deg, rgba(15, 23, 42, 0.88), rgba(76, 29, 149, 0.78));
+                backdrop-filter: blur(20px);
+            }
+            .kartu-mewah {
+                transition: all 0.4s ease;
+            }
+            .kartu-mewah:hover {
+                transform: translateY(-6px);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-[#F8FAFC] via-[#EFF6FF] to-[#F3E8FF] font-jakarta text-gelap min-h-screen overflow-x-hidden">
+
+    <!-- Latar Belakang Dekorasi Profesional -->
+    <div class="fixed top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div class="absolute -top-40 -right-40 w-[800px] h-[800px] bg-utama/10 rounded-full blur-[130px]"></div>
+        <div class="absolute -bottom-40 -left-40 w-[800px] h-[800px] bg-aksen/10 rounded-full blur-[130px]"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-info/4 rounded-full blur-[180px]"></div>
+        <div class="absolute top-20 left-20 w-32 h-32 bg-emas/10 rounded-full blur-[50px]"></div>
+        <div class="absolute bottom-20 right-20 w-40 h-40 bg-tiktok/10 rounded-full blur-[70px]"></div>
+    </div>
+
+    <!-- ✅ POPUP AKSES EKSKLUSIF - SANGAT MEWAH & PROFESIONAL ✅ -->
+    <div id="popupInfo" class="fixed inset-0 z-50 flex items-center justify-center overlay-mewah">
+        <div class="latar-kaca-mewah rounded-[40px] shadow-premium-tiktok p-12 w-full max-w-md relative animate-scale-in batas-mewah">
+            
+            <!-- Elemen Kilau Dekorasi -->
+            <div class="absolute -top-4 -left-4 w-20 h-20 gradasi-utama rounded-full opacity-30 blur-lg"></div>
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 gradasi-tiktok rounded-full opacity-20 blur-xl"></div>
+
+            <div class="text-center mb-10 relative z-10">
+                <!-- ✅ IKON UTAMA BERKILAU ✅ -->
+                <div class="w-32 h-32 rounded-[28px] gradasi-tiktok flex items-center justify-center shadow-glow-tiktok mx-auto mb-7 animate-melayang tombol-mewah border-2 border-white/50">
+                    <i class="fa fa-tiktok text-white text-6xl animate-kilau"></i>
+                </div>
+                
+                <h2 class="text-[32px] font-900 gradasi-teks mb-4 bayangan-teks-mewah">AKSES EKSLUSIF</h2>
+                <div class="w-24 h-1.5 gradasi-utama mx-auto rounded-full mb-5"></div>
+                <p class="text-netral font-medium text-lg leading-relaxed px-3">Dapatkan semua berkas terbaru, pembaruan fitur, dan konten premium eksklusif hanya untuk pengikut resmi kami.</p>
+            </div>
+
+            <!-- ✅ TOMBOL UTAMA ✅ -->
+            <a href="https://tiktok.com/@rangga.sad47" target="_blank" onclick="tutupPopupSetelahFollow()" class="block w-full gradasi-tiktok text-white py-5 rounded-[18px] font-bold text-lg shadow-glow-tiktok hover:shadow-premium-tiktok transition-all text-center mb-6 tombol-mewah animate-putar-gradasi">
+                <i class="fa fa-check-circle mr-3 text-xl"></i> IKUTI & BUKA AKSES SEKARANG
+            </a>
+
+            <div class="text-center text-sm text-gelap/75 font-semibold bg-lembut/70 py-3 rounded-xl backdrop-blur-sm">
+                <i class="fa fa-shield-check mr-2 text-sukses"></i> 100% Aman • Gratis • Terverifikasi
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ HALAMAN UTAMA - TAMPILAN PROFESIONAL ✅ -->
+    <div id="kontenUtama" class="hilang w-full min-h-screen py-24 px-6 relative z-10">
+        <div class="max-w-5xl mx-auto animate-masuk">
+            
+            <!-- HEADER UTAMA -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-20 pb-10 border-b border-lembut/70">
+                <h2 class="text-[48px] font-900 gradasi-teks bayangan-teks-mewah mb-5 md:mb-0">YOGA SKZ</h2>
+                <span class="latar-kaca-gelap text-white px-8 py-4 rounded-full font-semibold text-base flex items-center gap-4 shadow-luar-cahaya">
+                    <span class="w-3 h-3 bg-sukses rounded-full animate-pulse"></span>
+                    SISTEM AKTIF & TERBUKA
+                </span>
+            </div>
+
+            <!-- JUDUL HALAMAN -->
+            <div class="text-center mb-24">
+                <h1 class="text-[50px] font-900 text-gelap mb-6 tracking-tight bayangan-teks-mewah">Pusat Unduhan Resmi</h1>
+                <p class="text-netral text-lg max-w-3xl mx-auto leading-relaxed">Semua berkas telah melalui pemindaian keamanan berlapis, bebas dari ancaman, dijamin keasliannya, dan disiapkan oleh tim pengembang profesional kami.</p>
+                <div class="w-56 h-2 gradasi-utama mx-auto rounded-full mt-12 shadow-glow-utama/20"></div>
+            </div>
+
+            <!-- ✅ DAFTAR BERKAS ✅ -->
+            <div class="mb-24">
+                <div class="flex items-center justify-between mb-14">
+                    <h2 class="text-[26px] font-800 text-gelap flex items-center gap-5">
+                        <div class="w-14 h-14 gradasi-utama rounded-xl flex items-center justify-center shadow-glow-utama/30">
+                            <i class="fa fa-download text-white text-2xl"></i>
+                        </div>
+                        Kumpulan Berkas Premium
+                    </h2>
+                    <span class="text-base text-sukses font-bold bg-sukses/10 px-6 py-3 rounded-full shadow-sm">✅ Aman & Bebas Virus</span>
+                </div>
+
+                <div class="grid gap-10">
+                    <!-- BERKAS 1: FF 32 BIT -->
+                    <div class="latar-kaca-mewah rounded-[28px] p-9 shadow-premium hover:shadow-glow-utama kartu-mewah batas-mewah">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-8">
+                                <div class="w-24 h-24 bg-biruMewah/10 rounded-[16px] flex items-center justify-center group-hover:bg-biruMewah/20 transition-all shadow-dalam">
+                                    <i class="fa fa-android text-biruMewah text-4xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[24px] text-gelap mb-3">Free Fire 32 Bit</h3>
+                                    <p class="text-lg text-netral">Versi Ringan • Optimal RAM 2GB - 4GB • Anti Lag • Sangat Stabil</p>
+                                </div>
+                            </div>
+                            <a href="https://www.mediafire.com/file/d7t3x2nscwll7ct/Free_Fire_MAX_ARMv7.apks/file" target="_blank" class="gradasi-utama text-white px-9 py-5 rounded-xl font-semibold transition-all shadow-md tombol-mewah whitespace-nowrap text-lg">
+                                <i class="fa fa-download mr-3"></i> Unduh
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- BERKAS 2: FF 64 BIT -->
+                    <div class="latar-kaca-mewah rounded-[28px] p-9 shadow-premium-ungu hover:shadow-glow-aksen kartu-mewah batas-mewah">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-8">
+                                <div class="w-24 h-24 bg-unguMewah/10 rounded-[16px] flex items-center justify-center group-hover:bg-unguMewah/20 transition-all shadow-dalam">
+                                    <i class="fa fa-android text-unguMewah text-4xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[24px] text-gelap mb-3">Free Fire 64 Bit</h3>
+                                    <p class="text-lg text-netral">Versi Penuh • Grafik Ultra HD • Performa Maksimal • Fitur Lengkap</p>
+                                </div>
+                            </div>
+                            <a href="https://www.mediafire.com/file/cpjctcde2bvdkut/Free_Fire_MAX_ARMv8.apks/file" target="_blank" class="gradasi-utama text-white px-9 py-5 rounded-xl font-semibold transition-all shadow-md tombol-mewah whitespace-nowrap text-lg">
+                                <i class="fa fa-download mr-3"></i> Unduh
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- BERKAS 3: UNLOCK ID -->
+                    <div class="latar-kaca-mewah rounded-[28px] p-9 shadow-premium hover:shadow-glow-utama kartu-mewah batas-mewah">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-8">
+                                <div class="w-24 h-24 bg-info/10 rounded-[16px] flex items-center justify-center group-hover:bg-info/20 transition-all shadow-dalam">
+                                    <i class="fa fa-unlock-alt text-info text-4xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[24px] text-gelap mb-3">Unlock ID Config</h3>
+                                    <p class="text-lg text-netral">Buka Semua Fitur • Anti Banned • 100% Aman • Versi Terbaru</p>
+                                </div>
+                            </div>
+                            <a href="https://unlockffbeta" target="_blank" class="gradasi-utama text-white px-9 py-5 rounded-xl font-semibold transition-all shadow-md tombol-mewah whitespace-nowrap text-lg">
+                                <i class="fa fa-download mr-3"></i> Unduh
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- BERKAS 4: FILE JSON -->
+                    <div class="latar-kaca-mewah rounded-[28px] p-9 shadow-premium-ungu hover:shadow-glow-aksen kartu-mewah batas-mewah">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-8">
+                                <div class="w-24 h-24 bg-aksen/10 rounded-[16px] flex items-center justify-center group-hover:bg-aksen/20 transition-all shadow-dalam">
+                                    <i class="fa fa-file-code text-aksen text-4xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[24px] text-gelap mb-3">File Konfigurasi JSON</h3>
+                                    <p class="text-lg text-netral">Pengaturan Lengkap • Khusus Profesional • Siap Pakai • Optimal</p>
+                                </div>
+                            </div>
+                            <a href="https://www.mediafire.com/file/hc10an4kknul0ex/localconfig.json/file" target="_blank" class="gradasi-utama text-white px-9 py-5 rounded-xl font-semibold transition-all shadow-md tombol-mewah whitespace-nowrap text-lg">
+                                <i class="fa fa-download mr-3"></i> Unduh
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="text-center pt-20 border-t border-lembut/70 text-netral">
+                <p class="font-semibold text-xl">© 2026 YOGA SKZ TECHNOLOGY • PREMIUM EDITION</p>
+                <p class="mt-3 text-base">Dibangun dengan standar keamanan & kualitas tertinggi untuk kenyamanan Anda</p>
+            </footer>
+        </div>
+    </div>
+
+<script>
+    // Fungsi: Tutup Popup & Tampilkan Konten
+    function tutupPopupSetelahFollow() {
+        document.getElementById('popupInfo').classList.add('hilang');
+        document.getElementById('kontenUtama').classList.remove('hilang');
+        document.body.style.overflow = 'auto';
+    }
+</script>
 
 </body>
 </html>
